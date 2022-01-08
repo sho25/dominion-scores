@@ -3,6 +3,9 @@ import { AppBar } from '@mui/material';
 
 import TabMenu from './components/TabMenu';
 import PlayerInput from './components/PlayerInput';
+import Score from './components/Score';
+
+import { ScoreData } from './types';
 import { MAX_PLAYERS } from './constant';
 
 import './App.scss';
@@ -14,12 +17,16 @@ function App() {
       .fill(undefined)
       .map((_, index) => `player ${index + 1}`)
   );
-  const [scores, setScores] = useState<number[][]>([]);
+  const [scores, setScores] = useState<ScoreData[][]>([]);
 
   const setPlayerName = (index: number, value: string) => {
     const newPlayers = [...players];
     newPlayers[index] = value;
     setPlayers(newPlayers);
+  };
+
+  const setNewScore = (score: ScoreData[]) => {
+    setScores([...scores, score]);
   };
 
   const labels = ['players', 'scores', 'stats'];
@@ -30,7 +37,12 @@ function App() {
       setNumPlayers={setNumPlayers}
       setPlayerName={setPlayerName}
     />,
-    <div>scores</div>,
+    <Score
+      players={players}
+      numPlayers={numPlayers}
+      scores={scores}
+      setNewScore={setNewScore}
+    />,
     <div>stats</div>,
   ];
 

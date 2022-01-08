@@ -1,0 +1,10 @@
+.scoreInputRow {
+  display: flex;
+  align-items: center;
+
+  > div,
+  span {
+    width: 50%;
+    text-align: center;
+  }
+}

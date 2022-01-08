@@ -29,13 +29,13 @@ function TabMenu(props: Props) {
         onChange={handleChange}
         variant={isFullWidth ? 'fullWidth' : undefined}
       >
-        {labels.map((label) => (
-          <Tab label={label} />
+        {labels.map((label, index) => (
+          <Tab label={label} key={index} />
         ))}
       </Tabs>
       <div className="container">
         {tabContent.map((content: ReactNode, index: number) => (
-          <Content value={value} index={index}>
+          <Content value={value} index={index} key={index}>
             {content}
           </Content>
         ))}

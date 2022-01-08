@@ -18,7 +18,7 @@ function PlayerInput(props: Props) {
     newPlayers: string | null
   ) => {
     if (newPlayers !== null) {
-      setNumPlayers(parseInt(newPlayers));
+      setNumPlayers(Number(newPlayers));
     }
   };
 
