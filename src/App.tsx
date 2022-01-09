@@ -72,11 +72,9 @@ function App() {
 
   return (
     <>
-      {/* header */}
       <AppBar position="static">
         <h2 className="app-bar">Dominion Scores</h2>
       </AppBar>
-      {/* content */}
       <div className="App">
         <TabMenu isFullWidth={true} labels={labels} tabContent={content} />
       </div>
