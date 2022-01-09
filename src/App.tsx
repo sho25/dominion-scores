@@ -5,19 +5,22 @@ import TabMenu from './components/TabMenu';
 import PlayerInput from './components/PlayerInput';
 import Score from './components/Score';
 
+import useLocalStorage from './hooks/useLocalStorage';
+
 import { ScoreData } from './types';
 import { MAX_PLAYERS } from './constant';
 
 import './App.scss';
 
 function App() {
-  const [numPlayers, setNumPlayers] = useState(4);
-  const [players, setPlayers] = useState<string[]>(
+  const [numPlayers, setNumPlayers] = useLocalStorage('numPlayers', 4);
+  const [players, setPlayers] = useLocalStorage<string[]>(
+    'players',
     Array(MAX_PLAYERS)
       .fill(undefined)
       .map((_, index) => `player ${index + 1}`)
   );
-  const [scores, setScores] = useState<ScoreData[][]>([]);
+  const [scores, setScores] = useLocalStorage<ScoreData[][]>('scores', []);
 
   const setPlayerName = (index: number, value: string) => {
     const newPlayers = [...players];
