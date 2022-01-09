@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppBar } from '@mui/material';
 
 import TabMenu from './components/TabMenu';
 import PlayerInput from './components/PlayerInput';
 import Score from './components/Score';
+import Stats from './components/Stats';
+import DeleteFab from './components/DeleteFab';
 
 import useLocalStorage from './hooks/useLocalStorage';
 
@@ -32,21 +34,40 @@ function App() {
     setScores([...scores, score]);
   };
 
+  const resetAllData = () => {
+    setNumPlayers(4);
+    setPlayers(
+      Array(MAX_PLAYERS)
+        .fill(undefined)
+        .map((_, index) => `player ${index + 1}`)
+    );
+    setScores([]);
+  };
+
   const labels = ['players', 'scores', 'stats'];
   const content = [
-    <PlayerInput
-      numPlayers={numPlayers}
-      players={players}
-      setNumPlayers={setNumPlayers}
-      setPlayerName={setPlayerName}
-    />,
-    <Score
-      players={players}
-      numPlayers={numPlayers}
-      scores={scores}
-      setNewScore={setNewScore}
-    />,
-    <div>stats</div>,
+    <>
+      <PlayerInput
+        numPlayers={numPlayers}
+        players={players}
+        setNumPlayers={setNumPlayers}
+        setPlayerName={setPlayerName}
+      />
+      <DeleteFab action={resetAllData} />
+    </>,
+    <>
+      <Score
+        players={players}
+        numPlayers={numPlayers}
+        scores={scores}
+        setNewScore={setNewScore}
+      />
+      <DeleteFab action={resetAllData} />
+    </>,
+    <>
+      <Stats players={players} numPlayers={numPlayers} scores={scores} />
+      <DeleteFab action={resetAllData} />
+    </>,
   ];
 
   return (

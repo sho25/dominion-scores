@@ -22,7 +22,9 @@ function ScoreInput(props: Props) {
     <div>
       {players.slice(0, numPlayers).map((player, index) => (
         <div className="scoreInputRow" key={index}>
-          <span>{player}</span>
+          <div className="playerName">
+            <span>{player}</span>
+          </div>
           <TextField
             size="small"
             type="number"

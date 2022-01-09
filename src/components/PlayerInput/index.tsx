@@ -40,7 +40,7 @@ function PlayerInput(props: Props) {
             </ToggleButton>
           ))}
       </ToggleButtonGroup>
-      <div className="title">Player names</div>
+      <div className="title">Player Names</div>
       {players.slice(0, numPlayers).map((player, index) => {
         return (
           <div key={index}>

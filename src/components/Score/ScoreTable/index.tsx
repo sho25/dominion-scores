@@ -30,7 +30,7 @@ function ScoreTable(props: Props) {
         <TableBody>
           {scores.map((score, index) => (
             <TableRow key={index}>
-              <TableCell>{index}</TableCell>
+              <TableCell>{index + 1}</TableCell>
               {score.slice(0, numPlayers).map((item, scoreIndex) => (
                 <TableCell key={scoreIndex}>
                   {item.place ? `${item.score}pt / ${item.place}place` : '-'}
@@ -42,7 +42,7 @@ function ScoreTable(props: Props) {
       </Table>
     </TableContainer>
   ) : (
-    <div>No scores</div>
+    <div>No Scores</div>
   );
 }
 

@@ -56,7 +56,7 @@ function Score(props: Props) {
         <AddIcon />
       </Fab>
       <Dialog scroll="body" open={isOpen} onClose={() => setIsOpen(false)}>
-        <DialogTitle>Add new score</DialogTitle>
+        <DialogTitle>Add New Score</DialogTitle>
         <DialogContent>
           <DialogContentText>
             <ScoreInput
