@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function useLocalStorage<T>(key: string, defaultValue: T) {
-  const [value, setValue] = useState(() => {
+  const getItem = useCallback(() => {
     try {
       const stored = localStorage.getItem(key);
       if (stored !== null) return JSON.parse(stored);
@@ -9,7 +9,9 @@ export default function useLocalStorage<T>(key: string, defaultValue: T) {
     } catch {
       return defaultValue;
     }
-  });
+  }, []);
+
+  const [value, setValue] = useState(getItem);
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
