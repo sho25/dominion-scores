@@ -27,7 +27,7 @@ type Props = {
 const INITIAL_SCORE = Array(MAX_PLAYERS).fill(0);
 
 function Score(props: Props) {
-  const { scores, players, numPlayers, setNewScore } = props;
+  const { numPlayers, setNewScore } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [temporaryScore, setTemporaryScore] = useState<string[]>(INITIAL_SCORE);
 

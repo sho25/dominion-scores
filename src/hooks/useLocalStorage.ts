@@ -9,7 +9,7 @@ export default function useLocalStorage<T>(key: string, defaultValue: T) {
     } catch {
       return defaultValue;
     }
-  }, []);
+  }, [key, defaultValue]);
 
   const [value, setValue] = useState(getItem);
 

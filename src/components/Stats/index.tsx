@@ -14,7 +14,7 @@ function Stats(props: Props) {
   const formatPieChartData = (scores: ScoreData[][]) => {
     const firstPlaceCount = Array(numPlayers).fill(0);
     scores.forEach((scoreRow) => {
-      scoreRow.slice(0, numPlayers).map((score, playerIndex) => {
+      scoreRow.slice(0, numPlayers).forEach((score, playerIndex) => {
         if (score.place === 1) firstPlaceCount[playerIndex]++;
       });
     });
